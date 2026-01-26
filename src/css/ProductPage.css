@@ -1,0 +1,81 @@
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 2em;
+    width: 100%;
+    height: 100%;
+    /* размытый фон */
+    background: rgba(255, 255, 255, 0.1);
+    /* Прозрачный белый */
+    backdrop-filter: blur(10px);
+    /* Размытие фона */
+    -webkit-backdrop-filter: blur(10px);
+    /* Для Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Полупрозрачная граница */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    /* Тень для глубины */
+    border-radius: 15px;
+    /* Закругленные углы */
+}
+
+.card-img-cat {}
+
+.card img {
+    /* max-width: 70%; */
+    border-radius: 15%;
+}
+
+.card-img {
+    /* width: 30%; */
+}
+
+.description-card {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 2rem;
+}
+
+p:first-child {
+    font-size: 18px;
+    color: rgb(27, 3, 49);
+    margin-top: .8rem;
+}
+
+#cat-link {
+    background-color: #edd8bb52;
+    border-radius: 12px;
+    width: 12em;
+}
+
+.description-card a,
+p {
+    margin: 0;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+.prod-price {
+    margin: 0.9rem 0;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.prod-desc {
+    margin: 0;
+    margin-top: 1.5rem;
+    font-size: 18px;
+}
+
+.prod-rec {
+    margin: 0;
+    margin-top: 2rem;
+    font-size: 18px;
+}

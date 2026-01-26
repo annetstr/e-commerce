@@ -1,0 +1,95 @@
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-rows: repeat(3, 1fr) */
+    gap: 1em;
+    justify-items: stretch;
+    align-items: center;
+    justify-content: space-around;
+    align-content: space-between;
+    margin: 4% 2%;
+}
+
+.product-card {
+    justify-self: stretch;
+    align-self: stretch;
+    margin: 0 2%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    flex: 1;
+    /* Занимать все оставшееся пространство */
+    min-width: 0;
+    background: rgba(255, 255, 255, 0.1);
+    /* Прозрачный белый */
+    backdrop-filter: blur(10px);
+    /* Размытие фона */
+    -webkit-backdrop-filter: blur(10px);
+    /* Для Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Полупрозрачная граница */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    /* Тень для глубины */
+    border-radius: 15px;
+    /* Закругленные углы */
+}
+
+.product-card img {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15%;
+    margin-bottom: 10px;
+    min-height: 0;
+    min-width: 0;
+}
+
+.product-card a,
+p {
+    text-align: center;
+    margin: auto
+}
+
+.product-card p {
+    font-weight: bold;
+    font-size: 1.15rem;
+    padding: 5px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #050505;
+}
+
+@media (max-width: 890px) {
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        /* grid-template-rows: repeat(3, 1fr) */
+        gap: 1em;
+        justify-items: stretch;
+        align-items: center;
+        justify-content: space-around;
+        align-content: space-between;
+        margin: 4% 2%;
+    }
+}
+
+@media (max-width: 690px) {
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* grid-template-rows: repeat(3, 1fr) */
+        gap: 1em;
+        justify-items: stretch;
+        align-items: center;
+        justify-content: space-around;
+        align-content: space-between;
+        margin: 4% 2%;
+    }
+}

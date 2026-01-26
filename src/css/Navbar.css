@@ -1,0 +1,336 @@
+/* Основные стили навбара */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1%;
+    background: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    box-sizing: border-box;
+    height: 70px;
+}
+
+/* Контейнер для левой части (лого + каталог) */
+.navbar>.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+/* Логотип */
+.navbar .logo {
+    width: 150px;
+    height: 45px;
+    background-image: url('logo.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    /* border: 2px solid #4a6bff; */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.navbar .logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(74, 107, 255, 0.3);
+}
+
+/* Кнопка каталога */
+.navbar>.wrapper>button:nth-child(2) {
+    display: flex;
+    align-items: center;
+    height: 45px;
+    padding: 0 25px;
+    background: linear-gradient(135deg, #4a6bff, #3a5be0);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.navbar>.wrapper>button:nth-child(2) a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar>.wrapper>button:nth-child(2):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(58, 91, 224, 0.4);
+}
+
+/* Список категорий (будущее выпадающее меню) */
+.navbar>.wrapper>ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    list-style: none;
+    padding: 15px 0;
+    margin: 10px 0 0 0;
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1001;
+    border: 1px solid #f0f0f0;
+}
+
+/* Показываем меню при наведении на кнопку каталог */
+.navbar>.wrapper>button:nth-child(2):hover~ul,
+.navbar>.wrapper>ul:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(5px);
+}
+
+/* Элементы выпадающего меню */
+.navbar>.wrapper>ul li {
+    padding: 0;
+}
+
+.navbar>.wrapper>ul li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 25px;
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.navbar>.wrapper>ul li a:hover {
+    background: linear-gradient(90deg, rgba(74, 107, 255, 0.1), transparent);
+    color: #4a6bff;
+    padding-left: 30px;
+}
+
+.navbar>.wrapper>ul li a:hover::before {
+    content: "→";
+    position: absolute;
+    left: 15px;
+    opacity: 0.7;
+}
+
+/* Правая часть навбара (меню пользователя) */
+.navbar>div:last-child {
+    display: flex;
+    align-items: center;
+}
+
+/* Список правого меню */
+.navbar>div:last-child>ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Элементы правого меню */
+.navbar>div:last-child>ul li {
+    position: relative;
+}
+
+.navbar>div:last-child>ul li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    gap: 4px;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Иконки для правого меню */
+.navbar>div:last-child>ul li.items1 a::before {
+    content: "👤";
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.navbar>div:last-child>ul li.items2 a::before {
+    content: "📦";
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.navbar>div:last-child>ul li.items3 a::before {
+    content: "❤️";
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.navbar>div:last-child>ul li.items4 a::before {
+    content: "🛒";
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+/* Ховер-эффекты для правого меню */
+.navbar>div:last-child>ul li a:hover {
+    background: #f8f9ff;
+    color: #4a6bff;
+    transform: translateY(-2px);
+}
+
+/* Бейдж для корзины */
+.navbar>div:last-child>ul li.items4 {
+    position: relative;
+}
+
+.navbar>div:last-child>ul li.items4::after {
+    content: "0";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: linear-gradient(135deg, #ff4757, #ff3742);
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+}
+
+/* Анимация появления навбара */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navbar {
+    animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 0 1%;
+        height: 65px;
+    }
+
+    .navbar>div:last-child>ul {
+        gap: 20px;
+    }
+
+    .navbar>.wrapper>button:nth-child(2) {
+        padding: 0 20px;
+        font-size: 15px;
+    }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 15px;
+        height: 60px;
+    }
+
+    .navbar>.wrapper {
+        gap: 12px;
+    }
+
+    .navbar .logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+    }
+
+    .navbar>.wrapper>button:nth-child(2) {
+        height: 40px;
+        padding: 0 15px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+
+    .navbar>div:last-child>ul {
+        gap: 12px;
+    }
+
+    .navbar>div:last-child>ul li a {
+        font-size: 12px;
+        padding: 6px 8px;
+        min-width: 50px;
+    }
+
+    .navbar>div:last-child>ul li a::before {
+        font-size: 18px;
+    }
+
+    .navbar>div:last-child>ul li.items4::after {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+    }
+
+    /* Скрываем текст на очень маленьких экранах, оставляем только иконки */
+    @media (max-width: 480px) {
+        .navbar>div:last-child>ul li a span {
+            display: none;
+        }
+
+        .navbar>div:last-child>ul li a {
+            min-width: 40px;
+            padding: 8px;
+        }
+
+        .navbar>.wrapper>button:nth-child(2) {
+            padding: 0 12px;
+            font-size: 13px;
+        }
+    }
+}
+
+/* Эффект активного пункта меню */
+.navbar>div:last-child>ul li a.active {
+    color: #4a6bff;
+    background: rgba(74, 107, 255, 0.1);
+    font-weight: 600;
+}
+
+/* Разделитель между секциями (необязательно) */
+.navbar::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 0, 0, 0.1),
+            transparent);
+}
