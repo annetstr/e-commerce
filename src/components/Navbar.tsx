@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../components/auth/AuthContext';
 import "../css/Navbar.css"
 
 
 const Navbar: React.FC = () => {
     const [category, setCategory] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { user } = useAuth();
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
@@ -45,14 +47,19 @@ const Navbar: React.FC = () => {
                     ))}
                 </ul>)}
             </div>
-            <div>
+            {user && (<div>
                 <ul>
-                    <li className="items1"><a href="#">User</a></li>
+                    <Link to={'/profile_page'}><li className="items1"><a>User</a></li></Link>
                     <li className="items2"><a href="#">Заказы</a></li>
                     <li className="items3"><a href="#">Избранное</a></li>
                     <li className="items4"><a href="#">Корзина</a></li>
                 </ul>
-            </div>
+            </div>)}
+            {!user && (
+                <ul>
+                    <Link to={'/login'}><li className="items1"><a>Войти</a></li></Link>
+                </ul>)
+            }
 
         </div>
     );

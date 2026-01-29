@@ -2,15 +2,23 @@ import express from 'express';
 import cors from 'cors'
 import { url } from 'node:inspector';
 import productsData from '../public/db.json' with { type: 'json' };
+import authRoutes from './routes/auth.js';
+import userRoutes from './routes/user.js';
+import { authenticateToken } from './middleware/auth.js';
 
 const app = express()
 const PORT = 3000
 
 app.use(cors({
     origin: 'http://localhost:5173',
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json())
+
+app.use('/api/auth', authRoutes);
+app.use('/api/user', authenticateToken, userRoutes);
 
 
 // Моковые данные
