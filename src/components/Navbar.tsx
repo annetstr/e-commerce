@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../components/auth/AuthContext';
+import { useAuth } from './auth/AuthContext';
 import "../css/Navbar.css"
 
 

@@ -16,19 +16,20 @@ function ProfilePage() {
 
     return (
         <>
-            <Navbar />
-            <div className="container mx-auto px-4 py-8">
-                <h2 className="text-2xl font-bold mb-6">Личный кабинет</h2>
-                {/* Информация о пользователе */}
-                {user && (
-                    <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-                        <p>Вы вошли как: <strong>{user.name}</strong></p>
-                        <p>Email: {user.email}</p>
+            {user && (
+                <> <Navbar />
+                    <div className="container mx-auto px-4 py-8">
+                        <h2 className="text-2xl font-bold mb-6">Личный кабинет</h2>
+                        {/* Информация о пользователе */}
+                        {user && (
+                            <div className="mb-6 p-4 bg-gray-50 rounded-lg">
+                                <p>Вы вошли как: <strong>{user.name}</strong></p>
+                                <p>Email: {user.email}</p>
+                            </div>
+                        )}
                     </div>
-                )}
-            </div>
-            <button onClick={handleSubmit}>Выйти</button>
-            <Footer />
+                    <button onClick={handleSubmit}>Выйти</button>
+                    <Footer /></>)}
         </>
     )
 }

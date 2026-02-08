@@ -32,7 +32,7 @@ const User = sequelize.define('User', {
         defaultValue: '/default-avatar.png'
     },
     role: {
-        type: DataTypes.ENUM('user', 'admin'),
+        type: DataTypes.STRING,
         defaultValue: 'user'
     },
     emailVerified: {
@@ -44,8 +44,10 @@ const User = sequelize.define('User', {
     }
 }, {
     timestamps: true,
+    tableName: 'users',
     hooks: {
         beforeCreate: async (user) => {
+            console.log('🔐 Хук beforeCreate вызван!');
             if (user.password) {
                 user.password = await bcrypt.hash(user.password, 10);
             }
@@ -53,6 +55,7 @@ const User = sequelize.define('User', {
         beforeUpdate: async (user) => {
             if (user.changed('password')) {
                 user.password = await bcrypt.hash(user.password, 10);
+                console.log('✅ Пароль захеширован');
             }
         }
     }
@@ -64,8 +67,8 @@ User.prototype.comparePassword = async function (candidatePassword) {
 };
 
 // Синхронизация модели с базой данных
-await User.sync({ alter: true }); // Используйте { force: true } только в разработке для сброса таблицы
-console.log('✅ Модель User синхронизирована');
+// await User.sync({ alter: true });
+// console.log('✅ Модель User синхронизирована');
 
 export default User;
 
