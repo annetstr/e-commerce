@@ -65,7 +65,7 @@ router.post('/register', async (req, res) => {
                 role: user.role
             }
         });
-        console.log('✅ Регистрация завершена успешно');
+        console.log('Регистрация завершена успешно');
 
     } catch (error) {
         console.error('Ошибка регистрации:', error);

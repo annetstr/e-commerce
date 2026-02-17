@@ -25,19 +25,19 @@ app.use('/api/user', authenticateToken, userRoutes);
 (async () => {
     try {
         await sequelize.authenticate();
-        console.log('✅ Подключение к базе данных успешно!');
+        console.log('Подключение к базе данных успешно!');
 
         // Синхронизация моделей (создает таблицы если нет)
         await sequelize.sync({ alter: true });
-        console.log('✅ Модели синхронизированы с базой данных');
+        console.log('Модели синхронизированы с базой данных');
 
         // Проверяем таблицу users
         const [usersCount] = await sequelize.query('SELECT COUNT(*) FROM users');
         console.log(`👤 Пользователей в базе: ${usersCount[0].count}`);
 
     } catch (error) {
-        console.error('❌ Ошибка подключения к базе данных:', error.message);
-        console.log('💡 Проверьте настройки в database.js и .env файле');
+        console.error('Ошибка подключения к базе данных:', error.message);
+        console.log('Проверьте настройки в database.js и .env файле');
     }
 })();
 
@@ -107,7 +107,7 @@ app.get('/api/products/category/:category', (req: express.Request, res: express.
 });
 
 app.listen(PORT, () => {
-    console.log(`✅ Сервер запущен на порту ${PORT}`);
-    console.log(`🌐 Доступен по адресу: http://localhost:${PORT}`);
-    console.log(`📦 API товаров: http://localhost:${PORT}/api/products`);
+    console.log(`Сервер запущен на порту ${PORT}`);
+    console.log(`Доступен по адресу: http://localhost:${PORT}`);
+    console.log(`API товаров: http://localhost:${PORT}/api/products`);
 })

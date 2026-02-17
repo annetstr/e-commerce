@@ -47,7 +47,7 @@ const User = sequelize.define('User', {
     tableName: 'users',
     hooks: {
         beforeCreate: async (user) => {
-            console.log('🔐 Хук beforeCreate вызван!');
+            console.log('Хук beforeCreate вызван!');
             if (user.password) {
                 user.password = await bcrypt.hash(user.password, 10);
             }
@@ -55,7 +55,7 @@ const User = sequelize.define('User', {
         beforeUpdate: async (user) => {
             if (user.changed('password')) {
                 user.password = await bcrypt.hash(user.password, 10);
-                console.log('✅ Пароль захеширован');
+                console.log('Пароль захеширован');
             }
         }
     }
@@ -68,7 +68,7 @@ User.prototype.comparePassword = async function (candidatePassword) {
 
 // Синхронизация модели с базой данных
 // await User.sync({ alter: true });
-// console.log('✅ Модель User синхронизирована');
+// console.log('Модель User синхронизирована');
 
 export default User;
 

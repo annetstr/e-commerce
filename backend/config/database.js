@@ -21,14 +21,14 @@ const sequelize = new Sequelize(
     }
 );
 
-// Тестирование подключения
+// Проверка подключения
 try {
     await sequelize.authenticate();
     await sequelize.sync({ alter: true });
-    console.log('✅ База данных подключена');
+    console.log('База данных подключена');
 
 } catch (error) {
-    console.error('❌ Ошибка подключения к базе данных:', error);
+    console.error('Ошибка подключения к базе данных:', error);
 }
 
 export default sequelize;
